@@ -1,8 +1,11 @@
 package com.example.email
 
+import android.graphics.Typeface
+import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
@@ -14,7 +17,8 @@ class EmailAdapter(private val emails: List<Email>) : RecyclerView.Adapter<Email
         val senderTextView: TextView
         val titleTextView: TextView
         val summaryTextView: TextView
-
+        val emailTextView: TextView
+        val Iv: ImageView
         // We also create a constructor that accepts the entire item row
         // and does the view lookups to find each sub-view
         init {
@@ -23,6 +27,14 @@ class EmailAdapter(private val emails: List<Email>) : RecyclerView.Adapter<Email
             senderTextView = itemView.findViewById(R.id.sender)
             titleTextView = itemView.findViewById(R.id.emailTitle)
             summaryTextView = itemView.findViewById(R.id.emailDescription)
+            emailTextView = itemView.findViewById(R.id.emailDate)
+            Iv = itemView.findViewById(R.id.emailIcon)
+
+            titleTextView.setOnClickListener(){
+                titleTextView.setTypeface(null, Typeface.NORMAL)
+            }
+
+
         }
     }
 
@@ -46,6 +58,8 @@ class EmailAdapter(private val emails: List<Email>) : RecyclerView.Adapter<Email
         holder.senderTextView.text = email.sender
         holder.titleTextView.text = email.title
         holder.summaryTextView.text = email.summary
+        holder.emailTextView.text = email.date.substring(3,10) + email.date.substring(23)
+        holder.Iv.setImageResource(R.drawable.ic_launcher_foreground)
     }
 
 }

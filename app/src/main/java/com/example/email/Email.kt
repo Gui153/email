@@ -1,8 +1,14 @@
 package com.example.email
 
-class Email(val sender: String,
-            val title: String,
-            val summary: String) {
+import android.media.Image
+import java.util.Date
+
+class Email(
+    val sender: String,
+    val title: String,
+    val summary: String,
+    val date: String
+) {
 
 
 }
